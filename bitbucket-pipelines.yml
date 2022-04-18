@@ -1,0 +1,114 @@
+image: node:12.16.1
+pipelines:
+  custom:
+    Deploy-Specific-S3:
+      - variables:
+          - name: S3bucketname
+          - name: CloudFrontID
+          - name: CommandBuild
+          - name: AWSREGION
+      - step:
+          name: Build artifact
+          script:
+            - npm install --only-production
+            - CI=false npm run $CommandBuild
+          artifacts:
+            - dist/**
+            - dist
+      - step:
+          name: Deploy to S3
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.2.4
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWSREGION
+                S3_BUCKET: $S3bucketname
+                LOCAL_PATH: "dist"
+                ACL: "public-read"
+                CACHE_CONTROL: "max-age=3600"
+            - pipe: atlassian/aws-cloudfront-invalidate:0.1.3
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWSREGION
+                DISTRIBUTION_ID: $CloudFrontID
+                PATHS: "/*" # Optional
+  
+  branches:
+    release/demo:
+      - step:
+          caches:
+            - node
+          name: Build artifact
+          script:
+            - npm ci
+            - CI=false npm run build-staging
+          # after-script:
+          #   - if [ $BITBUCKET_EXIT_CODE != 0 ]; then curl -d  fi
+          artifacts:
+            - dist/**
+            - dist
+      - step:
+          name: Deploy to S3
+          deployment: Staging
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.4.4
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_REGION
+                S3_BUCKET: $S3_BUCKET
+                LOCAL_PATH: "dist"
+                ACL: "public-read"
+                CACHE_CONTROL: "max-age=3600"
+            - pipe: atlassian/aws-cloudfront-invalidate:0.1.3
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_REGION
+                DISTRIBUTION_ID: $AWS_CF
+                PATHS: "/*" # Optional
+                DEBUG: "true" # Optional
+          # after-script:
+          #   - if [  $BITBUCKET_EXIT_CODE == 0 ]; then curl -d "announce=true&message=***Build Admin Done - $(TZ=":Asia/Ho_Chi_Minh" date)***" -X POST https://bot.sanphamweb.com/skype.php ; fi
+          #   - if [  $BITBUCKET_EXIT_CODE != 0 ]; then curl -d "announce=true&message=***Build Admin Failed - $(TZ=":Asia/Ho_Chi_Minh" date)***" -X POST https://bot.sanphamweb.com/skype.php ; fi
+    
+    master: # Production
+      - step:
+          caches:
+            - node
+          name: Build artifact
+          script:
+            - npm install --only-production
+            - CI=false npm run build-prod
+          # after-script:
+          #   - if [ $BITBUCKET_EXIT_CODE != 0 ]; then curl -d  fi
+          artifacts:
+            - dist/**
+            - dist
+      - step:
+          name: Deploy to S3
+          deployment: Production
+          trigger: manual
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.4.4
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_REGION
+                S3_BUCKET: $S3_BUCKET
+                LOCAL_PATH: "dist"
+                ACL: "public-read"
+                CACHE_CONTROL: "max-age=3600"
+            - pipe: atlassian/aws-cloudfront-invalidate:0.1.3
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_REGION
+                DISTRIBUTION_ID: $AWS_CF
+                PATHS: "/*" # Optional
+                # DEBUG: "<boolean>" # Optional
+          # after-script:
+          #   - if [  $BITBUCKET_EXIT_CODE == 0 ]; then curl -d "announce=true&message=***Build Admin Done - $(TZ=":Asia/Ho_Chi_Minh" date)***" -X POST https://bot.sanphamweb.com/skype.php ; fi
+          #   - if [  $BITBUCKET_EXIT_CODE != 0 ]; then curl -d "announce=true&message=***Build Admin Failed - $(TZ=":Asia/Ho_Chi_Minh" date)***" -X POST https://bot.sanphamweb.com/skype.php ; fi

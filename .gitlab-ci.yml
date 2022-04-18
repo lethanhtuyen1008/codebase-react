@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deploy
+build-master:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build
+  variables:
+    DOCKER_TLS_CERTDIR: ''
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
+build-normal:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build
+  variables:
+    DOCKER_TLS_CERTDIR: ''
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+  only:
+    - develop
+deploy:
+  image: alpine:latest
+  stage: deploy
+  variables:
+    DOCKER_TLS_CERTDIR: ''
+  before_script:
+      - apk add openssh-client
+      - eval $(ssh-agent -s)
+      - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+      - mkdir -p ~/.ssh
+      - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh -o StrictHostKeyChecking=no $SSH_USER@$VM_IPADDRESS -p $SSH_PORT "/usr/bin/zsh run-${CI_PROJECT_NAME}.sh"
+  only:
+    - develop
