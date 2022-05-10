@@ -9,7 +9,7 @@ export default function Checkbox(props: Props) {
   return (
     <FormControl error={!!error}>
       <FormControlLabel
-        control={<MaterialCheckbox checked={checked} {...others} color="primary" />}
+        control={<MaterialCheckbox checked={checked} {...others} color='primary' />}
         label={label || ''}
         onChange={onChange}
         onBlur={onBlur}

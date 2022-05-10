@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 // material-ui imports
 import { Box, Button, Grid, Typography } from '@mui/material';
-
-// third-party
 
 // project imports
 import useYupValidationResolver from 'src/helpers/useYupValidationResolver';
@@ -14,7 +12,6 @@ import { GRID_SPACING } from 'src/commons/constant';
 import useSignIn from 'src/services/useSignIn';
 import useValidationFormLogin from './validation';
 import Backdrop from 'src/components/ui/backdrop';
-import { toast } from 'react-toastify';
 import { cookieProvider } from 'src/providers/cookieProvider';
 import { CookieKey } from 'src/commons/cookieKey';
 import { useHistory } from 'react-router-dom';
@@ -37,24 +34,14 @@ const Login = () => {
     },
   });
   const { handleSubmit } = methods;
-  const { mutate, data, isError, isSuccess, error, isLoading } = useSignIn();
+  const { mutate, isLoading } = useSignIn();
 
   const onSubmit = async (values: SignInForm) => {
-    mutate(values);
-  };
-
-  useEffect(() => {
-    if (isSuccess && data) {
-      toast.success('Đăng nhập thành công!');
-      cookieProvider.set(CookieKey.ACCESS_TOKEN, data.accessToken);
+    mutate(values).then(() => {
+      cookieProvider.set(CookieKey.ACCESS_TOKEN, 'token');
       history.push(RouteName.DASHBOARD);
-      return;
-    }
-
-    if (isError && error) {
-      toast.error(error.message);
-    }
-  }, [data, error, isError, isSuccess]);
+    });
+  };
 
   return (
     <>

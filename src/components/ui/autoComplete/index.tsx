@@ -13,18 +13,13 @@ const getItemDefault = (item: any) => `${item}`;
 const AutoComplete = <E extends unknown = string | number>(props: Props<E>) => {
   const {
     label,
-    controlProps,
-    labelProps,
     options,
-    itemProps,
-    getItemValue = getItemDefault,
     getItemLabel = getItemDefault,
     error,
     helperText,
     required,
     multiple = false,
     value,
-    loading,
     ...others
   } = props;
   const [itemList, setItemList] = useState<E[]>(() => (Array.isArray(options) ? options : []));

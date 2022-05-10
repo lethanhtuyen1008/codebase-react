@@ -1,4 +1,9 @@
-import { FormControlLabelProps, FormControlProps, InputLabelProps, RadioGroupProps } from '@mui/material';
+import {
+  FormControlLabelProps,
+  FormControlProps,
+  InputLabelProps,
+  RadioGroupProps,
+} from '@mui/material';
 import React from 'react';
 
 export type Props<E> = RadioGroupProps & {
