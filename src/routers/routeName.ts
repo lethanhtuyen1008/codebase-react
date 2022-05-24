@@ -12,4 +12,5 @@ export enum RouteName {
   CONTACTS = '/contacts',
   ABOUT = '/about',
   CART = '/cart',
+  LOGIN = '/login',
 }

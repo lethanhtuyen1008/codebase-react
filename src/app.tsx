@@ -52,6 +52,7 @@ const App = () => {
                 <BaseRoute exact path={RouteName.CONTACTS} componentPath={'pages/contacts'} />
                 <BaseRoute exact path={RouteName.ABOUT} componentPath={'pages/about'} />
                 <BaseRoute exact path={RouteName.CART} componentPath={'pages/cart'} />
+                <BaseRoute exact path={RouteName.LOGIN} componentPath={'pages/login'} />
               </Layout>
               <NotFoundRoute />
             </Switch>

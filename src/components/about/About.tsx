@@ -1,0 +1,35 @@
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+
+export default function BlogAbout() {
+  return (
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          component='img'
+          height='140'
+          image='data:image/jpeg;base64,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'
+          alt='green iguana'
+        />
+        <CardContent>
+          <Typography gutterBottom variant='h5' component='div'>
+            Lizard
+          </Typography>
+          <Typography variant='body2' color='text.secondary'>
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size='small' color='primary'>
+          Share
+        </Button>
+      </CardActions>
+    </Card>
+  );
+}

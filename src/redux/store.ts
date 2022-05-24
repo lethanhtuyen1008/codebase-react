@@ -6,7 +6,7 @@ import { PersistConfig, persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig: PersistConfig<any> = {
-  key: 'tag-card-grading',
+  key: 'project',
   storage,
   whitelist: ['localUserDataReducer'],
 };
