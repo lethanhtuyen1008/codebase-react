@@ -34,7 +34,7 @@ export default function themeTypography(theme: IThemeOption): TypographyOptions 
       fontWeight: 700,
     },
     h1: {
-      fontSize: '2.125rem',
+      fontSize: '3.13rem',
       color: theme.heading,
       fontWeight: 700,
     },

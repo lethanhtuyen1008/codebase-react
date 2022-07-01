@@ -1,11 +1,16 @@
-export class RouteName {
-  static readonly SIGN_IN = '/sign-in';
-  static readonly SIGN_UP = '/sign-up';
-  static readonly SIGN_OUT = '/sign-out';
+export enum RouteName {
+  SIGN_IN = '/sign-in',
+  SIGN_UP = '/sign-up',
+  SIGN_OUT = '/sign-out',
 
-  static readonly HOME = '/';
-  static readonly DASHBOARD = '/dashboard';
-  static readonly PROFILE = '/profile';
-  static readonly STASTIC = '/stastic';
-  static readonly CUSTOMER = '/customer';
+  HOME = '/',
+  DASHBOARD = '/dashboard',
+  PROFILE = '/profile',
+  STASTIC = '/stastic',
+  CUSTOMER = '/customer',
+  PRODUCT = '/product',
+  CONTACTS = '/contacts',
+  ABOUT = '/about',
+  CART = '/cart',
+  LOGIN = '/login',
 }

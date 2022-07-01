@@ -5,8 +5,8 @@ import { Props } from './types';
 export const TextField = (props: Props) => {
   return (
     <MaterialTextField
-      variant="standard"
-      margin="normal"
+      variant='standard'
+      margin='normal'
       fullWidth
       {...props}
       sx={{

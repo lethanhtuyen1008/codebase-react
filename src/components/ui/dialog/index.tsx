@@ -13,7 +13,13 @@ interface Props {
   footerDialog?: React.ReactNode;
 }
 
-export default function Dialog({ label = '', onClose = () => {}, open = false, message = '', footerDialog }: Props) {
+export default function Dialog({
+  label = '',
+  onClose = () => {},
+  open = false,
+  message = '',
+  footerDialog,
+}: Props) {
   const handleClose = () => {
     onClose();
   };
@@ -22,13 +28,13 @@ export default function Dialog({ label = '', onClose = () => {}, open = false, m
     <DialogMaterial
       open={open}
       onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
+      aria-labelledby='alert-dialog-title'
+      aria-describedby='alert-dialog-description'
     >
-      {label && <DialogTitle id="alert-dialog-title">{label}</DialogTitle>}
+      {label && <DialogTitle id='alert-dialog-title'>{label}</DialogTitle>}
 
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">{message}</DialogContentText>
+        <DialogContentText id='alert-dialog-description'>{message}</DialogContentText>
       </DialogContent>
 
       <DialogActions>{footerDialog}</DialogActions>
