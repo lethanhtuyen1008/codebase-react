@@ -8,7 +8,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig: PersistConfig<any> = {
   key: 'project',
   storage,
-  whitelist: ['localUserDataReducer'],
+  whitelist: ['productReducer'],
 };
 
 const appReducer = combineReducers<RootState>(reducers);

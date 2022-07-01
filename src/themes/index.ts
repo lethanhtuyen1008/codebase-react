@@ -12,8 +12,8 @@ const theme = () => {
   const themeOption: IThemeOption = {
     colors: color,
     heading: color.grey900,
-    paper: color.paper,
-    backgroundDefault: color.paper,
+    paper: color.white,
+    backgroundDefault: color.white,
     background: color.secondaryLight,
     darkTextPrimary: color.grey700,
     darkTextSecondary: color.grey900,

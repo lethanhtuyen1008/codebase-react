@@ -19,9 +19,9 @@ export default {
   successMain: '#05b46a',
   successDark: '#00c853',
   // error
-  errorLight: '#ffffff',
-  errorMain: '#ffffff',
-  errorDark: '#ffffff',
+  errorLight: '#eec9cb',
+  errorMain: '#d6747a',
+  errorDark: '#d06067',
   // info
   infoLight: '#ffffff',
   infoMain: '#ffffff',
