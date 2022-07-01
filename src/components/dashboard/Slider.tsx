@@ -1,6 +1,5 @@
-import { Button, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
 import * as React from 'react';
 // import Typography from '@mui/material/Typography';
 import SwipeableViews from 'react-swipeable-views';
@@ -26,7 +25,6 @@ const images = [
 ];
 
 function SwipeableTextMobileStepper() {
-  const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleStepChange = (step: number) => {
@@ -34,66 +32,60 @@ function SwipeableTextMobileStepper() {
   };
 
   return (
-    <Box>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-        autoPlay
-        autoplay
-      >
-        {images.map((step, index) => (
-          <div key={index}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box sx={{ display: 'flex', padding: { xs: 1, sm: 4 } }}>
-                <Box sx={{ paddingLeft: '24px' }}>
-                  <Typography
-                    variant='h1'
-                    component='div'
-                    sx={{ fontSize: '55px', lineHeight: '1.2', marginBottom: '22px' }}
-                  >
-                    50% Off For Your First Shopping
-                  </Typography>
-                  <Typography
-                    variant='subtitle1'
-                    component='p'
-                    sx={{ fontSize: '16px', marginBottom: '22px' }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat
-                    eu, quam etiam at quis ut convalliss.
-                  </Typography>
-                  <Typography component='a'>
-                    <Button
-                      variant='contained'
-                      sx={{
-                        borderRadius: '10px',
-                        textTransform: 'capitalize',
-                        color: 'common.white',
-                        background: 'primary.main',
-                      }}
-                    >
-                      Shop Now
-                    </Button>
-                  </Typography>
-                </Box>
-                <Box
-                  component='img'
-                  sx={{
-                    height: 255,
-                    display: 'block',
-                    maxWidth: 400,
-                    overflow: 'hidden',
-                    width: '100%',
-                  }}
-                  src={step.imgPath}
-                />
-              </Box>
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
-    </Box>
+    <AutoPlaySwipeableViews
+      index={activeStep}
+      onChangeIndex={handleStepChange}
+      enableMouseEvents
+      autoPlay
+      autoplay
+    >
+      {images.map((step, index) => (
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          key={index}
+          sx={{ display: 'flex', py: { xs: '32px', sm: '80px' } }}
+        >
+          <Box>
+            <Typography variant='h1' component='div' sx={{ marginBottom: '22px' }}>
+              50% Off For Your First Shopping
+            </Typography>
+
+            <Typography variant='subtitle1' component='p' sx={{ marginBottom: '22px' }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu,
+              quam etiam at quis ut convalliss.
+            </Typography>
+
+            <Typography component='a'>
+              <Button
+                variant='contained'
+                sx={{
+                  borderRadius: '10px',
+                  textTransform: 'capitalize',
+                  color: 'common.white',
+                  background: 'primary.main',
+                }}
+              >
+                Shop Now
+              </Button>
+            </Typography>
+          </Box>
+
+          <Box
+            component='img'
+            sx={{
+              height: 255,
+              display: 'block',
+              maxWidth: 400,
+              overflow: 'hidden',
+              width: '100%',
+              px: { xs: 0, sm: 2 },
+              py: { xs: 2, sm: 0 },
+            }}
+            src={step.imgPath}
+          />
+        </Stack>
+      ))}
+    </AutoPlaySwipeableViews>
   );
 }
 

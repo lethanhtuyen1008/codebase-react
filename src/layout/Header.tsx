@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import { Container } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -84,11 +83,11 @@ export default function Header() {
           <Toolbar>
             <Container sx={{ display: 'flex', alignItems: 'center' }}>
               <Box sx={{ display: 'flex', alignSelf: 'center', mr: 2 }}>
-                <LocalPhoneIcon sx={{ fontSize: '20px' }} />
+                <LocalPhoneIcon />
                 <Typography
                   variant='subtitle1'
                   component='span'
-                  sx={{ flexGrow: 1, color: '#fff', fontSize: '14px', marginLeft: '10px' }}
+                  sx={{ flexGrow: 1, marginLeft: '10px' }}
                 >
                   +0904121653
                 </Typography>
@@ -98,7 +97,7 @@ export default function Header() {
                 <Typography
                   variant='subtitle1'
                   component='span'
-                  sx={{ flexGrow: 1, color: '#fff', marginLeft: '10px', fontSize: '12px' }}
+                  sx={{ flexGrow: 1, marginLeft: '10px' }}
                 >
                   Lethanhphong_tony@yahoo.com.vn
                 </Typography>
@@ -108,9 +107,7 @@ export default function Header() {
                 <Item label='Them FAQ"s' />
                 <Item label='Need Help' />
                 <Item label='EN' />
-                <CheckIcon sx={{ fontSize: '10px' }} />
                 <Item label='USD' />
-                <CheckIcon sx={{ fontSize: '10px' }} />
               </Box>
             </Container>
           </Toolbar>

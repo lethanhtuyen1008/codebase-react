@@ -43,7 +43,12 @@ const data = [
 const Home = () => {
   return (
     <Container>
-      <Box sx={{ background: 'common.white' }}>
+      <Box
+        sx={{
+          background: 'common.white',
+          width: { xs: 'calc(100vw - 32px)', sm: 'auto' },
+        }}
+      >
         <SwipeableTextMobileStepper />
       </Box>
 
@@ -52,9 +57,9 @@ const Home = () => {
           Flash Deals
         </Typography>
 
-        <Grid container spacing={5}>
+        <Grid container spacing={1}>
           {data.map((product, index) => (
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={3}>
               <CardProduct
                 key={index}
                 id={product.id}
