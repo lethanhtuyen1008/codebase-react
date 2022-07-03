@@ -1,6 +1,7 @@
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import * as React from 'react';
 import Slider from 'react-slick';
+import SwipeableTextMobileStepper from 'src/components/dashboard/Slider';
 
 // const data = [
 //   {
@@ -70,10 +71,10 @@ import Slider from 'react-slick';
 // ];
 var settings = {
   dots: true,
-  infinite: false,
+  infinite: true,
   speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
+  slidesToShow: 3,
+  slidesToScroll: 3,
   // responsive: [
   //   {
   //     breakpoint: 1024,
@@ -104,8 +105,17 @@ var settings = {
 const Home = () => {
   return (
     <Container>
-      <div className='container'>
-        <Slider {...settings}>
+      <Box
+        sx={{
+          background: 'common.white',
+          width: { xs: 'calc(100vw - 32px)', sm: 'auto' },
+        }}
+      >
+        <SwipeableTextMobileStepper />
+      </Box>
+
+      <div>
+        <Slider {...settings} arrows>
           <div>
             <img src='http://placekitten.com/g/400/200' />
           </div>
