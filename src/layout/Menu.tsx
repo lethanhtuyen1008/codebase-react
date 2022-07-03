@@ -23,8 +23,7 @@ function Menu() {
     <Box
       sx={{
         display: 'flex',
-        marginBottom: '30px',
-        zIndex: '999',
+        paddingBottom: 2,
       }}
     >
       <Container

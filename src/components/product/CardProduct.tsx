@@ -10,7 +10,6 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Box, Typography } from '@mui/material';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { useState } from 'react';
 
 const Star = () => {
   return <StarOutlineIcon sx={{ color: 'error.main', fontSize: '20px', marginBottom: '8px' }} />;
@@ -28,11 +27,10 @@ const CardProduct = ({
   price: number;
   discount: number;
 }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = React.useState(0);
   return (
     <Card sx={{ width: '100%' }}>
       <CardHeader
-        sx={{}}
         avatar={
           <Avatar
             aria-label='recipe'

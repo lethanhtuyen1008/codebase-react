@@ -6,15 +6,25 @@ import Typography from '@mui/material/Typography';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import { Container } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import { styled } from '@mui/material/styles';
 import PersonIcon from '@mui/icons-material/Person';
+import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import Menu from './Menu';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import TextField from 'src/components/ui/textField';
 const Item = ({ label }: { label: string }) => {
   return (
     <Typography
@@ -34,40 +44,9 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
     padding: '0 4px',
   },
 }));
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    width: 'auto',
-  },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 1),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '85ch',
-    },
-  },
-  borderRadius: '30px',
-  border: '1px solid #e6e6e6',
-}));
 export default function Header() {
+  const [state, setState] = React.useState(false);
   return (
     <Box>
       <Box sx={{ flexGrow: 1 }}>
@@ -87,7 +66,7 @@ export default function Header() {
                 <Typography
                   variant='subtitle1'
                   component='span'
-                  sx={{ flexGrow: 1, marginLeft: '10px' }}
+                  sx={{ flexGrow: 1, marginLeft: '10px', color: 'common.white' }}
                 >
                   +0904121653
                 </Typography>
@@ -97,7 +76,7 @@ export default function Header() {
                 <Typography
                   variant='subtitle1'
                   component='span'
-                  sx={{ flexGrow: 1, marginLeft: '10px' }}
+                  sx={{ flexGrow: 1, marginLeft: '10px', color: 'common.white' }}
                 >
                   Lethanhphong_tony@yahoo.com.vn
                 </Typography>
@@ -114,10 +93,13 @@ export default function Header() {
         </AppBar>
       </Box>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position='static' sx={{ backgroundColor: '#fff' }}>
+        <AppBar
+          position='static'
+          sx={{ bgcolor: 'common.white', display: { xs: 'none', md: 'block' } }}
+        >
           <Toolbar>
             <Container sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Box>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <svg
                   width='120'
                   height='34'
@@ -147,23 +129,10 @@ export default function Header() {
                   />
                 </svg>
               </Box>
-              <Box>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon sx={{ color: '#7D879C', zIndex: '9999' }} />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder='Searching for...'
-                    sx={{
-                      backgroundColor: '#fff',
-                      paddingLeft: '35px',
-                      ':hover': {
-                        border: '1px solid #e79aa7',
-                      },
-                    }}
-                  />
-                </Search>
+              <Box sx={{ minWidth: '700px' }}>
+                <TextField label='Search' fullWidth variant='outlined' />
               </Box>
+
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Link to='login'>
                   <Typography>
@@ -189,8 +158,69 @@ export default function Header() {
               </Box>
             </Container>
           </Toolbar>
+
           <Menu />
         </AppBar>
+
+        <AppBar
+          position='static'
+          sx={{ display: { xs: 'block', md: 'none' }, bgcolor: 'common.white' }}
+        >
+          <Toolbar>
+            <IconButton
+              size='large'
+              edge='start'
+              color='inherit'
+              aria-label='menu'
+              sx={{ mr: 2 }}
+              onClick={() => setState(true)}
+            >
+              <MenuIcon color='primary' />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+
+        <Drawer anchor='left' open={state} onClose={() => setState(false)}>
+          <Box display='flex' py={2} px={2} alignItems='center' sx={{ borderBottom: 'solid 1px' }}>
+            <IconButton
+              size='large'
+              edge='start'
+              color='inherit'
+              aria-label='menu'
+              sx={{ mr: 2 }}
+              onClick={() => setState(false)}
+            >
+              <CloseIcon color='primary' />
+            </IconButton>
+            <Typography variant='h4' component='p' sx={{ flexGrow: 1 }}>
+              Menu
+            </Typography>
+          </Box>
+
+          <List sx={{ width: '100vw' }}>
+            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+
+          <Divider />
+
+          <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
       </Box>
     </Box>
   );
