@@ -114,7 +114,7 @@ const Home = () => {
         <SwipeableTextMobileStepper />
       </Box>
 
-      <div>
+      <Box>
         <Slider {...settings} arrows>
           <div>
             <img src='http://placekitten.com/g/400/200' />
@@ -129,7 +129,7 @@ const Home = () => {
             <img src='http://placekitten.com/g/400/200' />
           </div>
         </Slider>
-      </div>
+      </Box>
     </Container>
   );
 };
