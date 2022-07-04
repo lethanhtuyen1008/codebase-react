@@ -21,7 +21,6 @@ const CardProduct = ({
   price,
   discount,
 }: {
-  id: number;
   name: string;
   image: string;
   price: number;
