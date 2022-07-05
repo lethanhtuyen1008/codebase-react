@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Box, Typography } from '@mui/material';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import Avatar from '@mui/material/Avatar';
@@ -8,7 +9,6 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import { Box, Typography } from '@mui/material';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
 const Star = () => {

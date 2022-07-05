@@ -52,6 +52,32 @@ var settings = {
   slidesToShow: 4,
   slidesToScroll: 4,
   centerPadding: '100px',
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 const FlexDeals = () => {
@@ -68,21 +94,15 @@ const FlexDeals = () => {
 
       <Box
         sx={{
-          width: { xs: 'calc(100vw - 32px)', sm: 'calc(100vw - 32px)', md: 'auto', lg: 'auto' },
+          width: {
+            xs: 'calc(100vw - 32px)',
+            sm: 'calc(100vw - 32px)',
+            md: 'calc(100vw - 32px)',
+            lg: 'auto',
+          },
         }}
       >
-        <Slider
-          {...settings}
-          responsive={[
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 1,
-              },
-            },
-          ]}
-          centerPadding='15px'
-        >
+        <Slider {...settings} centerPadding='15px'>
           {FlexDealsdata.map((item, index) => (
             <CardProduct
               key={index}

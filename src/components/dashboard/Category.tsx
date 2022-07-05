@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Box, Container, Typography } from '@mui/material';
+import Card from '@mui/material/Card';
 import Slider from 'react-slick';
-// import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import CardMedia from '@mui/material/CardMedia';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 const itemData = [
@@ -39,24 +39,78 @@ const settings = {
   speed: 500,
   slidesToShow: 3,
   slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 const ListCategory = () => {
   return (
-    <Slider {...settings}>
-      {itemData.map((item) => (
-        <Box
-          sx={{
-            width: '365px',
-            height: '130px',
-            borderRadius: '4px',
-          }}
-        >
-          <ImageListItem key={item.img} sx={{ borderRadius: '4px' }}>
-            <img src={item.img} alt={item.title} loading='lazy' />
-          </ImageListItem>
-        </Box>
-      ))}
-    </Slider>
+    <Box
+      sx={{
+        width: {
+          xs: 'calc(100vw - 32px)',
+          sm: 'calc(100vw - 32px)',
+          md: 'calc(100vw - 32px)',
+          lg: 'auto',
+        },
+      }}
+    >
+      <Slider {...settings}>
+        {itemData.map((item) => (
+          <Box
+            sx={{
+              width: '365px',
+              height: '130px',
+              borderRadius: '6px',
+              p: 1.2,
+            }}
+          >
+            <Card
+              sx={{
+                width: '100%',
+                // border: (theme) => `solid 1px ${theme.palette.divider}`,
+                background: '#fff',
+                padding: '16px',
+              }}
+            >
+              <CardMedia
+                sx={{
+                  borderRadius: '6px',
+                }}
+                component='img'
+                width='362'
+                height='120'
+                image={item.img}
+                alt='Paella dish'
+              />
+            </Card>
+          </Box>
+        ))}
+      </Slider>
+    </Box>
   );
 };
 const Category = () => {
