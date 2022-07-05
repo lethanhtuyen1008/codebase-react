@@ -50,7 +50,7 @@ var settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 1,
+  slidesToScroll: 4,
   centerPadding: '100px',
 };
 
@@ -66,17 +66,22 @@ const FlexDeals = () => {
         </Typography>
       </Box>
 
-      <Box sx={{ width: { sm: 'auto', xs: 'calc(100vw - 32px)' } }}>
+      <Box
+        sx={{
+          width: { xs: 'calc(100vw - 32px)', sm: 'calc(100vw - 32px)', md: 'auto', lg: 'auto' },
+        }}
+      >
         <Slider
           {...settings}
           responsive={[
             {
-              breakpoint: 400,
+              breakpoint: 600,
               settings: {
                 slidesToShow: 1,
               },
             },
           ]}
+          centerPadding='15px'
         >
           {FlexDealsdata.map((item, index) => (
             <CardProduct
