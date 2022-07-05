@@ -38,11 +38,28 @@ const data = [
     price: 80000,
     discount: 28,
   },
+  {
+    id: 5,
+    name: 'Nike Court Zoom Vapor Cage',
+    image:
+      'https://bazar-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fflash-4.png&w=3840&q=75',
+    price: 80000,
+    discount: 28,
+  },
+  {
+    id: 6,
+    name: 'Nike Court Zoom Vapor Cage',
+    image:
+      'https://bazar-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fflash-4.png&w=3840&q=75',
+    price: 80000,
+    discount: 28,
+  },
 ];
+
 var settings = {
   focusOnSelect: true,
   infinite: true,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
   speed: 500,
 };
@@ -58,8 +75,18 @@ const Home = () => {
         <SwipeableTextMobileStepper />
       </Box>
 
-      <Box>
-        <Slider {...settings}>
+      <Box sx={{ width: { sm: 'auto', xs: 'calc(100vw - 32px)' } }}>
+        <Slider
+          {...settings}
+          responsive={[
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ]}
+        >
           {data.map((item, index) => (
             <CardProduct
               key={index}
