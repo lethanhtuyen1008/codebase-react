@@ -7,7 +7,7 @@ const MenuItem = ({ label, to }: { label: string; to: string }) => {
   return (
     <Link
       to={to}
-      sx={{
+      style={{
         textDecoration: 'none',
         marginLeft: '30px',
       }}
