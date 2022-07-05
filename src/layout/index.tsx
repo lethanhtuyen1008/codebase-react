@@ -13,6 +13,7 @@ function Layout(props: LayoutProps) {
         minHeight: '100vh',
         margin: 'auto',
         backgroundColor: 'common.white',
+        height: '2000px',
       }}
     >
       <Box

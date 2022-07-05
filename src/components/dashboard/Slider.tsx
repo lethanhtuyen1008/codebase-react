@@ -1,7 +1,5 @@
-import { Button, Stack, Typography } from '@mui/material';
-import Box from '@mui/material/Box';
 import * as React from 'react';
-// import Typography from '@mui/material/Typography';
+import { Button, Stack, Typography, Box } from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
