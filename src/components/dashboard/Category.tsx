@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Box, Container, Typography } from '@mui/material';
+import Card from '@mui/material/Card';
 import Slider from 'react-slick';
-// import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import CardMedia from '@mui/material/CardMedia';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 const itemData = [
@@ -48,12 +48,29 @@ const ListCategory = () => {
           sx={{
             width: '365px',
             height: '130px',
-            borderRadius: '4px',
+            borderRadius: '6px',
+            p: 1.2,
           }}
         >
-          <ImageListItem key={item.img} sx={{ borderRadius: '4px' }}>
-            <img src={item.img} alt={item.title} loading='lazy' />
-          </ImageListItem>
+          <Card
+            sx={{
+              width: '100%',
+              // border: (theme) => `solid 1px ${theme.palette.divider}`,
+              background: '#fff',
+              padding: '16px',
+            }}
+          >
+            <CardMedia
+              sx={{
+                borderRadius: '6px',
+              }}
+              component='img'
+              width='362'
+              height='120'
+              image={item.img}
+              alt='Paella dish'
+            />
+          </Card>
         </Box>
       ))}
     </Slider>
