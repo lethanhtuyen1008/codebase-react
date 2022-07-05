@@ -65,18 +65,27 @@ const FlexDeals = () => {
           View all
         </Typography>
       </Box>
-      <Box>
-        <Slider {...settings}>
+
+      <Box sx={{ width: { sm: 'auto', xs: 'calc(100vw - 32px)' } }}>
+        <Slider
+          {...settings}
+          responsive={[
+            {
+              breakpoint: 400,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ]}
+        >
           {FlexDealsdata.map((item, index) => (
-            <Box>
-              <CardProduct
-                key={index}
-                name={item.name}
-                price={item.price}
-                image={item.image}
-                discount={item.discount}
-              />
-            </Box>
+            <CardProduct
+              key={index}
+              name={item.name}
+              price={item.price}
+              image={item.image}
+              discount={item.discount}
+            />
           ))}
         </Slider>
       </Box>

@@ -17,8 +17,9 @@ const Home = () => {
           <SwipeableTextMobileStepper />
         </Box>
       </Container>
-      <Box sx={{ background: '#e9f4ff' }}>
+      <Box>
         <FlexDeals />
+
         <Category />
       </Box>
     </>
