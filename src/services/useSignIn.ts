@@ -36,8 +36,8 @@ const useSignIn = () => {
 
       setData(res);
       setIsSuccess(true);
-    } catch (error) {
-      setError(error);
+    } catch (err) {
+      setError(err);
       setIsSuccess(false);
       setIsError(true);
     } finally {

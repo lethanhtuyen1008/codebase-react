@@ -10,7 +10,7 @@ pipelines:
       - step:
           name: Build artifact
           script:
-            - npm install --only-production
+            - yarn install --only-production
             - CI=false npm run $CommandBuild
           artifacts:
             - dist/**
@@ -80,7 +80,7 @@ pipelines:
             - node
           name: Build artifact
           script:
-            - npm install --only-production
+            - yarn install --only-production
             - CI=false npm run build-prod
           # after-script:
           #   - if [ $BITBUCKET_EXIT_CODE != 0 ]; then curl -d  fi

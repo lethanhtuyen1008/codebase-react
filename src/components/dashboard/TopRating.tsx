@@ -44,7 +44,7 @@ const Star = () => {
 };
 const TopRating = () => {
   return (
-    <Grid item xs={12} lg={6}>
+    <>
       <Box
         sx={{
           display: 'flex',
@@ -107,7 +107,7 @@ const TopRating = () => {
           ))}
         </Grid>
       </Card>
-    </Grid>
+    </>
   );
 };
 export default TopRating;

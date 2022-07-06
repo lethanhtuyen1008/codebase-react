@@ -10,8 +10,6 @@ const MenuItem = ({ label, to }: { label: string; to: string }) => {
       style={{
         textDecoration: 'none',
         marginLeft: '30px',
-        color: '#333',
-        fontSize: '18px',
       }}
     >
       {label}
