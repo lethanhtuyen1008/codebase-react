@@ -9,10 +9,10 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarIcon from '@mui/icons-material/Star';
 
 const Star = () => {
-  return <StarOutlineIcon sx={{ color: 'error.main', fontSize: '20px', marginBottom: '8px' }} />;
+  return <StarIcon sx={{ color: 'error.main', fontSize: '20px', marginBottom: '8px' }} />;
 };
 
 const CardProduct = ({
