@@ -71,7 +71,7 @@ const TopRating = () => {
         <Grid container spacing={2.7}>
           {RatingData.map((data, index) => (
             <Grid item xs={6} sm={6} md={3}>
-              <Box>
+              <Box key={index}>
                 <CardMedia
                   sx={{
                     width: '118px',
