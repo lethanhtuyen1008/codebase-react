@@ -7,6 +7,7 @@ import { Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCommonStyles from 'src/themes/styles';
+import 'src/assets/css/styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { CookieKey } from './commons/cookieKey';

@@ -38,10 +38,10 @@ const AutoComplete = <E extends unknown = string | number>(props: Props<E>) => {
       id='checkboxes-tags-demo'
       options={itemList}
       getOptionLabel={(option: E) => getItemLabel(option)?.toString() || ''}
-      renderOption={(props, option: E, { selected }) => {
+      renderOption={(restProps, option: E, { selected }) => {
         if (multiple) {
           return (
-            <li {...props}>
+            <li {...restProps}>
               <Checkbox
                 icon={<CheckBoxOutlineBlankIcon fontSize='small' />}
                 checkedIcon={<CheckBoxIcon fontSize='small' />}
@@ -52,7 +52,7 @@ const AutoComplete = <E extends unknown = string | number>(props: Props<E>) => {
           );
         }
 
-        return <li {...props}>{getItemLabel(option)}</li>;
+        return <li {...restProps}>{getItemLabel(option)}</li>;
       }}
       loading
       renderInput={(params) => (

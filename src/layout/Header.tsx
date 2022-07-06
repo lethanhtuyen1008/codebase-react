@@ -78,11 +78,11 @@ export default function Header() {
                   component='span'
                   sx={{ flexGrow: 1, marginLeft: '10px', color: 'common.white' }}
                 >
-                  Lethanhphong_tony@yahoo.com.vn
+                  tony@yahoo.com.vn
                 </Typography>
               </Box>
 
-              <Box sx={{ ml: 'auto' }}>
+              <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'block' } }}>
                 <Item label='Them FAQ"s' />
                 <Item label='Need Help' />
                 <Item label='EN' />

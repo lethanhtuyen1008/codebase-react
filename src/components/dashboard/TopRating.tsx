@@ -70,7 +70,7 @@ const TopRating = () => {
       >
         <Grid container spacing={2.7}>
           {RatingData.map((data, index) => (
-            <Grid item xs={6} sm={6} md={3}>
+            <Grid item xs={6} sm={6} md={3} key={index}>
               <Box>
                 <CardMedia
                   sx={{
