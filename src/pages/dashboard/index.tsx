@@ -19,18 +19,22 @@ const Home = () => {
           <SwipeableTextMobileStepper />
         </Box>
       </Container>
+
       <Box>
         <FlexDeals />
         <Category />
       </Box>
-      <Box sx={{ p: 4 }}>
-        <Container>
-          <Grid container spacing={4}>
+
+      <Container>
+        <Grid container spacing={4}>
+          <Grid item xs={12} lg={6}>
             <TopRating />
+          </Grid>
+          <Grid item xs={12} lg={6}>
             <FeatureBrands />
           </Grid>
-        </Container>
-      </Box>
+        </Grid>
+      </Container>
     </>
   );
 };
