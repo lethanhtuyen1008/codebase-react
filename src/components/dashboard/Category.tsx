@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
 import Slider from 'react-slick';
+import Chip from '@mui/material/Chip';
 import CardMedia from '@mui/material/CardMedia';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -9,27 +10,32 @@ const itemData = [
   {
     img:
       'https://bazar-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanners%2Fcategory-2.png&w=1920&q=75',
-    title: 'Bed',
+    title: 'Headphone',
+    description: '3k Oders this week',
   },
   {
     img:
       'https://bazar-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanners%2Fcategory-3.png&w=1920&q=75',
-    title: 'Kitchen',
+    title: 'Headphone',
+    description: '3k Oders this week',
   },
   {
     img:
       'https://bazar-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanners%2Fcategory-1.png&w=1920&q=75',
-    title: 'Sink',
+    title: 'Headphone',
+    description: '3k Oders this week',
   },
   {
     img:
       'https://bazar-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanners%2Fcategory-2.png&w=1920&q=75',
-    title: 'Sink',
+    title: 'Headphone',
+    description: '3k Oders this week',
   },
   {
     img:
       'https://bazar-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanners%2Fcategory-2.png&w=1920&q=75',
-    title: 'Sink',
+    title: 'Headphone',
+    description: '3k Oders this week',
   },
 ];
 
@@ -76,6 +82,7 @@ const ListCategory = () => {
           md: 'calc(100vw - 32px)',
           lg: 'auto',
         },
+        marginBottom: '35px',
       }}
     >
       <Slider {...settings}>
@@ -94,6 +101,7 @@ const ListCategory = () => {
                 // border: (theme) => `solid 1px ${theme.palette.divider}`,
                 background: '#fff',
                 padding: '16px',
+                position: 'relative',
               }}
             >
               <CardMedia
@@ -105,6 +113,30 @@ const ListCategory = () => {
                 height='120'
                 image={item.img}
                 alt='Paella dish'
+              />
+              <Chip
+                label={item.title}
+                sx={{
+                  position: 'absolute',
+                  top: '25px',
+                  left: '30px',
+                  fontSize: '10px',
+                  height: '24px',
+                  background: '#0F3460',
+                  color: 'common.white',
+                }}
+              />
+              <Chip
+                label={item.description}
+                sx={{
+                  position: 'absolute',
+                  top: '25px',
+                  right: '30px',
+                  fontSize: '10px',
+                  height: '24px',
+                  background: 'common.white',
+                  color: 'black',
+                }}
               />
             </Card>
           </Box>
