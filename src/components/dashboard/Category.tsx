@@ -92,7 +92,7 @@ const ListCategory = () => {
               width: '365px',
               height: '130px',
               borderRadius: '6px',
-              p: 1.2,
+              // p: 1.2,
             }}
           >
             <Card
@@ -147,7 +147,7 @@ const ListCategory = () => {
 };
 const Category = () => {
   return (
-    <Container>
+    <Container sx={{ marginBottom: '70px' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 4, pt: 4 }}>
         <Typography variant='h2' component='div'>
           Top Categories

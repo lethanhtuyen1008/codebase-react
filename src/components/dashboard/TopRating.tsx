@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-// import CardContent from '@mui/material/CardContent';
 import StarIcon from '@mui/icons-material/Star';
 const RatingData = [
   {
@@ -44,7 +43,7 @@ const Star = () => {
 };
 const TopRating = () => {
   return (
-    <Grid item xs={12} lg={6}>
+    <Box>
       <Box
         sx={{
           display: 'flex',
@@ -70,8 +69,8 @@ const TopRating = () => {
       >
         <Grid container spacing={2.7}>
           {RatingData.map((data, index) => (
-            <Grid item xs={6} sm={6} md={3} key={index}>
-              <Box>
+            <Grid item xs={6} sm={6} md={3}>
+              <Box key={index}>
                 <CardMedia
                   sx={{
                     width: '118px',
@@ -107,7 +106,7 @@ const TopRating = () => {
           ))}
         </Grid>
       </Card>
-    </Grid>
+    </Box>
   );
 };
 export default TopRating;

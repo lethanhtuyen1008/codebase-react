@@ -28,7 +28,7 @@ const CardProduct = ({
 }) => {
   const [count, setCount] = React.useState(0);
   return (
-    <Box sx={{ m: 2 }}>
+    <Box>
       <Card sx={{ border: (theme) => `solid 1px ${theme.palette.divider}` }}>
         <CardHeader
           avatar={

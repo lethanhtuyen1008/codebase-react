@@ -5,6 +5,8 @@ import SwipeableTextMobileStepper from 'src/components/dashboard/Slider';
 import Category from 'src/components/dashboard/Category';
 import TopRating from 'src/components/dashboard/TopRating';
 import FeatureBrands from 'src/components/dashboard/FeaturedBrands';
+import NewArrivals from 'src/components/dashboard/NewArrivals';
+import Cars from 'src/components/dashboard/Cars';
 
 const Home = () => {
   return (
@@ -25,7 +27,7 @@ const Home = () => {
         <Category />
       </Box>
 
-      <Container>
+      <Container sx={{ marginBottom: '70px' }}>
         <Grid container spacing={4}>
           <Grid item xs={12} lg={6}>
             <TopRating />
@@ -34,6 +36,16 @@ const Home = () => {
             <FeatureBrands />
           </Grid>
         </Grid>
+      </Container>
+      <Container
+        sx={{
+          marginBottom: '70px',
+        }}
+      >
+        <NewArrivals />
+      </Container>
+      <Container>
+        <Cars />
       </Container>
     </>
   );
