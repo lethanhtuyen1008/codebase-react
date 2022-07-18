@@ -89,7 +89,7 @@ const Cars = () => {
       </Box>
       <Grid container spacing={3}>
         {dataCars.map((cars, index) => (
-          <Grid item lg={3} key={index}>
+          <Grid item lg={3} xs={12} sm={6} key={index}>
             <Card sx={{ border: (theme) => `solid 1px ${theme.palette.divider}` }}>
               <CardHeader
                 avatar={
