@@ -100,6 +100,7 @@ const FlexDeals = () => {
             md: 'calc(100vw - 32px)',
             lg: 'auto',
           },
+          mg: { md: 'auto' },
         }}
       >
         <Slider {...settings} centerPadding='15px'>

@@ -43,6 +43,9 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
     border: `2px solid ${theme.palette.background.paper}`,
     padding: '0 4px',
   },
+  '& .MuiContainer-root': {
+    padding: '0',
+  },
 }));
 
 export default function Header() {

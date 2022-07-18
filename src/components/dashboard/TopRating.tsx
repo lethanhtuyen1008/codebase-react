@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-// import CardContent from '@mui/material/CardContent';
 import StarIcon from '@mui/icons-material/Star';
 const RatingData = [
   {
@@ -44,7 +43,7 @@ const Star = () => {
 };
 const TopRating = () => {
   return (
-    <>
+    <Box>
       <Box
         sx={{
           display: 'flex',
@@ -107,7 +106,7 @@ const TopRating = () => {
           ))}
         </Grid>
       </Card>
-    </>
+    </Box>
   );
 };
 export default TopRating;
