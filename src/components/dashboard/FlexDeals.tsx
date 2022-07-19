@@ -94,9 +94,9 @@ const FlexDeals = () => {
       <Box
         sx={{
           width: {
-            xs: 'calc(100vw - 32px)',
-            sm: 'calc(100vw - 32px)',
-            md: 'calc(100vw - 32px)',
+            xs: 'calc(100vw - 8px)',
+            sm: 'calc(100vw - 8px)',
+            md: 'calc(100vw - 8px)',
             lg: 'auto',
           },
           mg: { md: 'auto' },
