@@ -45,13 +45,12 @@ const FlexDealsdata = [
     discount: 28,
   },
 ];
-var settings = {
+const settings = {
   dots: true,
   infinite: true,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  centerPadding: '100px',
   responsive: [
     {
       breakpoint: 1024,
@@ -103,15 +102,17 @@ const FlexDeals = () => {
           mg: { md: 'auto' },
         }}
       >
-        <Slider {...settings} centerPadding='15px'>
+        <Slider {...settings}>
           {FlexDealsdata.map((item, index) => (
-            <CardProduct
-              key={index}
-              name={item.name}
-              price={item.price}
-              image={item.image}
-              discount={item.discount}
-            />
+            <Box>
+              <CardProduct
+                key={index}
+                name={item.name}
+                price={item.price}
+                image={item.image}
+                discount={item.discount}
+              />
+            </Box>
           ))}
         </Slider>
       </Box>
