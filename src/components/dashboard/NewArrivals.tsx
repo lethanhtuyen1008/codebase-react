@@ -74,7 +74,7 @@ const NewArrivals = () => {
       >
         <Grid container spacing={1}>
           {NewArrivalsData.map((data, index) => (
-            <Grid item xs={6} sm={6} md={2}>
+            <Grid item xs={12} sm={6} md={2}>
               <Box key={index}>
                 <CardMedia
                   sx={{
@@ -82,6 +82,7 @@ const NewArrivals = () => {
                     height: '180px',
                     mb: 2,
                     borderRadius: '4px',
+                    margin: { sm: 'auto', xs: 'auto' },
                   }}
                   component='img'
                   image={data.image}

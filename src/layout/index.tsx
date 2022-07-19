@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { Box } from '@mui/material';
-
+import { Box, Container } from '@mui/material';
 import { LayoutProps } from './type';
 import Header from './Header';
+import Footer from './Footer';
 
 function Layout(props: LayoutProps) {
   return (
@@ -13,7 +12,6 @@ function Layout(props: LayoutProps) {
         minHeight: '100vh',
         margin: 'auto',
         backgroundColor: 'common.white',
-        height: '2000px',
       }}
     >
       <Box
@@ -37,6 +35,11 @@ function Layout(props: LayoutProps) {
           </Box>
 
           <Box sx={{ marginTop: '180px', minHeight: '100vh' }}>{props.children}</Box>
+          <Box sx={{ backgroundColor: 'primary.main' }}>
+            <Container sx={{ py: 9 }}>
+              <Footer />
+            </Container>
+          </Box>
         </Box>
       </Box>
     </Box>

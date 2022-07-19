@@ -44,7 +44,11 @@ const Home = () => {
       >
         <NewArrivals />
       </Container>
-      <Container>
+      <Container
+        sx={{
+          marginBottom: '70px',
+        }}
+      >
         <Cars />
       </Container>
     </>

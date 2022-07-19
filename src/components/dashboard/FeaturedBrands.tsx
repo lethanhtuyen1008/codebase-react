@@ -42,9 +42,9 @@ const FeatureBrands = () => {
           display: 'flex',
         }}
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 3, sm: 2 }}>
           {FeaturedData.map((data, index) => (
-            <Grid item xs={6} sm={6} md={6}>
+            <Grid item xs={12} sm={6} md={6}>
               <Box key={index}>
                 <CardMedia
                   sx={{
@@ -52,6 +52,7 @@ const FeatureBrands = () => {
                     height: '180px',
                     mb: 2,
                     borderRadius: '4px',
+                    margin: { sm: 'auto' },
                   }}
                   component='img'
                   image={data.image}
