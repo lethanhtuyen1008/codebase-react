@@ -1,7 +1,7 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import * as React from 'react';
-import CardProduct from 'src/components/product/CardProduct';
 import Slider from 'react-slick';
+import CardProduct from 'src/components/product/CardProduct';
 
 const FlexDealsdata = [
   {
@@ -81,7 +81,7 @@ const settings = {
 
 const FlexDeals = () => {
   return (
-    <Container>
+    <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 4, pt: 4 }}>
         <Typography variant='h2' component='div'>
           Flash Deals
@@ -116,7 +116,7 @@ const FlexDeals = () => {
           ))}
         </Slider>
       </Box>
-    </Container>
+    </Box>
   );
 };
 export default FlexDeals;

@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
-import Slider from 'react-slick';
-import Chip from '@mui/material/Chip';
 import CardMedia from '@mui/material/CardMedia';
-import 'slick-carousel/slick/slick.css';
+import Chip from '@mui/material/Chip';
+import * as React from 'react';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 const itemData = [
   {
     img:
@@ -77,12 +77,11 @@ const ListCategory = () => {
     <Box
       sx={{
         width: {
-          xs: 'calc(100vw - 32px)',
-          sm: 'calc(100vw - 32px)',
-          md: 'calc(100vw - 32px)',
+          xs: 'calc(100vw - 48px)',
+          sm: 'calc(100vw - 48px)',
+          md: 'calc(100vw - 48px)',
           lg: 'auto',
         },
-        marginBottom: '35px',
       }}
     >
       <Slider {...settings}>
@@ -147,7 +146,7 @@ const ListCategory = () => {
 };
 const Category = () => {
   return (
-    <Container sx={{ marginBottom: '70px' }}>
+    <Box sx={{ marginBottom: '70px' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 4, pt: 4 }}>
         <Typography variant='h2' component='div'>
           Top Categories
@@ -159,7 +158,7 @@ const Category = () => {
       <Box>
         <ListCategory />
       </Box>
-    </Container>
+    </Box>
   );
 };
 export default Category;
