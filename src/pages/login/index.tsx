@@ -37,9 +37,11 @@ const Login = () => {
   const { mutate, isLoading } = useSignIn();
 
   const onSubmit = async (values: SignInForm) => {
-    mutate(values).then(() => {
-      cookieProvider.set(CookieKey.ACCESS_TOKEN, 'token');
-      history.push(RouteName.DASHBOARD);
+    mutate(values).then((response) => {
+      console.log(response);
+
+      cookieProvider.set(CookieKey.ACCESS_TOKEN, response.accessToken);
+      // history.push(RouteName.DASHBOARD);
     });
   };
 

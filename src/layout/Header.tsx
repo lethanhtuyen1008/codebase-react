@@ -25,6 +25,11 @@ import Menu from './Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import TextField from 'src/components/ui/textField';
+import { cookieProvider } from 'src/providers/cookieProvider';
+import { CookieKey } from 'src/commons/cookieKey';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import MenuMui from '@mui/material/Menu';
 const Item = ({ label }: { label: string }) => {
   return (
     <Typography
@@ -50,6 +55,15 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 export default function Header() {
   const [state, setState] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+    cookieProvider.delete(CookieKey.ACCESS_TOKEN);
+  };
   return (
     <Box>
       <Box sx={{ flexGrow: 1 }}>
@@ -137,15 +151,48 @@ export default function Header() {
               </Box>
 
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Link to='login'>
-                  <Typography>
-                    <IconButton aria-label='cart'>
-                      <StyledBadge>
-                        <PersonIcon sx={{ fontSize: '30px' }} />
-                      </StyledBadge>
-                    </IconButton>
-                  </Typography>
-                </Link>
+                {cookieProvider.get(CookieKey.ACCESS_TOKEN) ? (
+                  <div>
+                    <Button
+                      id='demo-positioned-button'
+                      aria-controls={open ? 'demo-positioned-menu' : undefined}
+                      aria-haspopup='true'
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                    >
+                      Dashboard
+                    </Button>
+                    <MenuMui
+                      id='demo-positioned-menu'
+                      aria-labelledby='demo-positioned-button'
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    </MenuMui>
+                  </div>
+                ) : (
+                  <Link to='login'>
+                    <Typography>
+                      <IconButton aria-label='cart'>
+                        <StyledBadge>
+                          <PersonIcon sx={{ fontSize: '30px' }} />
+                        </StyledBadge>
+                      </IconButton>
+                    </Typography>
+                  </Link>
+                )}
 
                 <Typography
                   sx={{

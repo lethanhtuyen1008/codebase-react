@@ -1,29 +1,26 @@
 import { useCallback, useState } from 'react';
-import { ApiEndpoint } from 'src/commons/apiEndpoint';
-import { apiClient } from 'src/providers/axiosProvider';
 
 export type RequestSignIn = {
   email: string;
   password: string;
 };
 
-export type ResponeSignIn = {
+export type ResponseSignIn = {
   accessToken: string;
-  email: string;
-  refresh_expires: number;
-  refreshToken: string;
 };
 
-export function signIn(request: RequestSignIn): Promise<ResponeSignIn> {
-  return apiClient.post(ApiEndpoint.SIGN_IN, request);
+export function signIn(_request: RequestSignIn): Promise<ResponseSignIn> {
+  return new Promise((rev) => {
+    rev({ accessToken: 'token' });
+  });
 }
 
 const useSignIn = () => {
-  const [isLoading, setIsloading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const mutate = useCallback(async (request: RequestSignIn) => {
-    setIsloading(true);
-    return await signIn(request).finally(() => setIsloading(false));
+    setLoading(true);
+    return await signIn(request).finally(() => setLoading(false));
   }, []);
 
   return {
