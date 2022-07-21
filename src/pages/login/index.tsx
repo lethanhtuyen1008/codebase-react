@@ -29,8 +29,8 @@ const Login = () => {
   const methods = useForm<SignInForm>({
     resolver,
     defaultValues: {
-      email: 'admin@batdongsanmarket.vn',
-      password: 'Tai@101098',
+      email: '',
+      password: '',
     },
   });
   const { handleSubmit } = methods;

@@ -19,39 +19,16 @@ export function signIn(request: RequestSignIn): Promise<ResponeSignIn> {
 }
 
 const useSignIn = () => {
-  const [data, setData] = useState<ResponeSignIn | null>(null);
   const [isLoading, setIsloading] = useState<boolean>(false);
-  const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [error, setError] = useState<any>({});
 
   const mutate = useCallback(async (request: RequestSignIn) => {
-    setIsSuccess(false);
-    setIsError(false);
-    setIsloading(false);
-
-    try {
-      setIsloading(true);
-      const res = await signIn(request);
-
-      setData(res);
-      setIsSuccess(true);
-    } catch (err) {
-      setError(err);
-      setIsSuccess(false);
-      setIsError(true);
-    } finally {
-      setIsloading(false);
-    }
+    setIsloading(true);
+    return await signIn(request).finally(() => setIsloading(false));
   }, []);
 
   return {
     mutate,
-    data,
     isLoading,
-    isSuccess,
-    error,
-    isError,
   };
 };
 
