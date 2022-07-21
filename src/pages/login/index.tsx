@@ -14,8 +14,8 @@ import useValidationFormLogin from './validation';
 import Backdrop from 'src/components/ui/backdrop';
 import { cookieProvider } from 'src/providers/cookieProvider';
 import { CookieKey } from 'src/commons/cookieKey';
-import { useHistory } from 'react-router-dom';
-import { RouteName } from 'src/routers/routeName';
+// import { useHistory } from 'react-router-dom';
+// import { RouteName } from 'src/routers/routeName';
 
 interface SignInForm {
   email: string;
@@ -25,7 +25,7 @@ interface SignInForm {
 const Login = () => {
   const { loginFormSchema } = useValidationFormLogin();
   const resolver = useYupValidationResolver(loginFormSchema);
-  const history = useHistory();
+  // const history = useHistory();
   const methods = useForm<SignInForm>({
     resolver,
     defaultValues: {
